@@ -1,364 +1,1488 @@
+```html
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>PasarKita - Jual Beli Baru & Bekas</title>
-<style>
-:root{--bg:#0d0f13;--card:#171a21;--line:#262a33;--text:#f2f2f2;--muted:#9aa0ab;--o:#ff6a1a}
-*{box-sizing:border-box}
-html,body{margin:0}
-body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);padding-top:env(safe-area-inset-top,0px)}
-header{position:sticky;top:0;z-index:10;background:#0a0c10;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:12px 20px}
-.logo{font-weight:800;font-size:20px;cursor:pointer}.logo span{color:var(--o)}
-nav a{color:var(--muted);font-size:14px;padding:6px 10px;border-radius:8px;cursor:pointer;white-space:nowrap}
-nav a.on,nav a:hover{color:var(--o)}
-.grow{flex:1}
-.btn{background:var(--o);color:#fff;border:0;border-radius:8px;padding:10px 16px;font-weight:600;cursor:pointer;font-size:14px;text-decoration:none;display:inline-block;text-align:center}
-.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
-.btn.sm{padding:7px 12px;font-size:13px}
-main{max-width:1200px;margin:0 auto;padding:20px}
-input,select,textarea{width:100%;background:#0e1117;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:10px 12px;font-size:14px;margin:4px 0 12px;font-family:inherit}
-label{font-size:13px;color:var(--muted)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.hero{background:linear-gradient(120deg,#0a0c10,#1c2029);border:1px solid var(--line);border-radius:14px;padding:26px}
-.hero h1{margin:0 0 6px;font-size:clamp(26px,4vw,40px);text-transform:uppercase}
-.hero h1 span{color:var(--o)}
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin:20px 0}
-.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 6px;text-align:center;font-size:13px;cursor:pointer}
-.tile.on{border-color:var(--o);color:var(--o)}
-.ti{font-size:26px;margin-bottom:4px}
-.pic img,.pic .ph{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.ph{display:grid;place-items:center;font-size:44px;background:#21252d}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-.item{cursor:pointer}
-.body{padding:12px}
-.price{color:var(--o);font-weight:700;font-size:16px}
-.muted{color:var(--muted);font-size:13px}
-.tag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:6px;background:#262a33;margin-right:4px}
-.tag.new{background:var(--o);color:#fff}
-.row{display:flex;gap:8px;align-items:center}
-.layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.msgs{height:55vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
-.bub{max-width:75%;padding:8px 12px;border-radius:12px;background:#262a33;font-size:14px;word-wrap:break-word;align-self:flex-start}
-.bub.me{align-self:flex-end;background:var(--o)}
-.bub img{max-width:100%;border-radius:8px;display:block}
-.err{color:#ff6b6b;font-size:13px;min-height:18px}
-.tabbar{display:none}
-.box{max-width:460px;margin:30px auto;padding:24px}
-@media (max-width:760px){
- header{padding:10px 14px}
- .top,.who{display:none}
- main{padding:14px 14px 90px}
- .hero{padding:20px}
- .tiles{gap:6px}
- .tile{font-size:11px;padding:10px 2px}
- .ti{font-size:20px}
- .grid{grid-template-columns:repeat(2,1fr);gap:10px}
- .layout{grid-template-columns:1fr}
- .bub{max-width:88%}
- .msgs{height:58vh}
- .tabbar{display:flex;position:fixed;bottom:0;left:0;right:0;background:#0a0c10;border-top:1px solid var(--line);justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));z-index:20}
- .tabbar a{color:var(--muted);font-size:12px;cursor:pointer;padding:4px 6px}
- .tabbar a.on{color:var(--o)}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barkas — Pasar Barang Bekas Berkualitas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        barkas: {
+                            dimgray: '#78726D',
+                            khaki: '#ADA69C',
+                            timberwolf: '#D6D3CE',
+                            utorange: '#FF8500',
+                            pantone: '#FF5700',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar matching Timberwolf & Dim Gray palette */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #D6D3CE;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #78726D;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF8500;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up {
+            animation: slideUp 0.25s ease-out forwards;
+        }
+    </style>
 </head>
-<body>
-<div id="app"></div>
-<nav class="tabbar" id="tabbar"></nav>
-<script>
-const $=s=>document.querySelector(s);
-const K={u:'pk_users',s:'pk_session',i:'pk_items',c:'pk_chats',f:'pk_fav'};
-const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}};
-const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){alert('Penyimpanan penuh. Gunakan foto yang lebih kecil.');return false}};
-const uid=()=>Math.random().toString(36).slice(2,10);
-const CATS=['Otomotif','Gadget','Pakaian','Kosmetik','Rumah Tangga','Furnitur','Hobi & Olahraga','Buku & Alat Tulis','Mainan & Bayi','Hewan Peliharaan'];
-const EMO={Otomotif:'🚗',Gadget:'📱',Pakaian:'👕',Kosmetik:'💄','Rumah Tangga':'🏠',Furnitur:'🛋️','Hobi & Olahraga':'⚽','Buku & Alat Tulis':'📚','Mainan & Bayi':'🧸','Hewan Peliharaan':'🐾'};
-const CITIES={'Banjarmasin':[-3.3186,114.5944],'Banjarbaru':[-3.4420,114.8320],'Martapura':[-3.4069,114.8483],'Jakarta':[-6.2088,106.8456],'Surabaya':[-7.2575,112.7521],'Bandung':[-6.9175,107.6191],'Semarang':[-6.9667,110.4167],'Yogyakarta':[-7.7956,110.3695],'Medan':[3.5952,98.6722],'Makassar':[-5.1477,119.4327]};
-let S={view:'home',cat:'Semua',cond:'',sort:'dist',q:'',loc:null,city:'Banjarmasin',id:null,rad:'',pmin:'',pmax:''};
+<body class="bg-[#D6D3CE] text-[#2F2C2A] antialiased selection:bg-[#FF8500]/25 selection:text-[#FF5700]">
 
-S.q=load('pk_lastq','')||'';
-const me=()=>load(K.u,[]).find(u=>u.id===load(K.s,null))||null;
-const dist=(a,b)=>{const R=6371,r=x=>x*Math.PI/180;const d1=r(b[0]-a[0]),d2=r(b[1]-a[1]);const h=Math.sin(d1/2)**2+Math.cos(r(a[0]))*Math.cos(r(b[0]))*Math.sin(d2/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
-const rp=n=>'Rp '+Number(n).toLocaleString('id-ID');
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const go=(v,id)=>{S.view=v;S.id=id??null;render();window.scrollTo(0,0)};
-const pic=i=>((i.photos&&i.photos[0])||i.photo)?`<img src="${(i.photos&&i.photos[0])||i.photo}" alt="">`:`<div class="ph">${EMO[i.cat]||'📦'}</div>`;
-const citySelect=(id,val)=>`<select id="${id}">${Object.keys(CITIES).map(c=>`<option ${c===val?'selected':''}>${c}</option>`).join('')}</select>`;
+    <!-- ==================== HEADER & NAVIGATION (#78726D Dim Gray Surface) ==================== -->
+    <header class="sticky top-0 z-40 bg-[#78726D] border-b border-[#ADA69C]/40 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20 gap-3 md:gap-6">
+                
+                <!-- Brand Logo -->
+                <a href="#" onclick="resetAllFilters(); return false;" class="flex items-center gap-2.5 shrink-0 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FF8500] to-[#FF5700] flex items-center justify-center text-white shadow-md shadow-black/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-display font-extrabold text-xl md:text-2xl tracking-tight text-white block leading-none">
+                            Bar<span class="text-[#FF8500]">kas</span>
+                        </span>
+                        <span class="text-[11px] font-medium text-[#D6D3CE] hidden sm:block mt-0.5">
+                            Pasar Barang Bekas Berkualitas
+                        </span>
+                    </div>
+                </a>
 
-function shrink(file,max,cb){
-  const r=new FileReader();
-  r.onload=()=>{const im=new Image();im.onload=()=>{const s=Math.min(1,max/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',0.75))};im.src=r.result};
-  r.readAsDataURL(file);
-}
+                <!-- Search & Location Bar (Desktop & Tablet) -->
+                <div class="hidden md:flex flex-1 max-w-2xl items-center bg-[#D6D3CE] rounded-2xl border border-[#ADA69C] focus-within:bg-white focus-within:border-[#FF8500] focus-within:ring-4 focus-within:ring-[#FF8500]/25 transition-all overflow-hidden">
+                    <!-- Location Selector -->
+                    <div class="relative flex items-center pl-3.5 pr-2 border-r border-[#ADA69C] shrink-0">
+                        <i class="fa-solid fa-location-dot text-[#FF5700] text-sm mr-2"></i>
+                        <select id="locationFilterDesktop" onchange="syncLocation(this.value)" aria-label="Pilih Lokasi" class="bg-transparent text-sm font-semibold text-[#2F2C2A] focus:outline-none cursor-pointer pr-1 py-2.5">
+                            <option value="Semua Kota">Semua Kota</option>
+                            <option value="Bandung">Bandung</option>
+                            <option value="Sumedang">Sumedang</option>
+                            <option value="Jakarta">Jakarta</option>
+                            <option value="Surabaya">Surabaya</option>
+                            <option value="Yogyakarta">Yogyakarta</option>
+                            <option value="Semarang">Semarang</option>
+                            <option value="Denpasar">Denpasar</option>
+                        </select>
+                    </div>
+                    <!-- Real-time Search Input -->
+                    <div class="relative flex-1 flex items-center">
+                        <input type="text" id="searchInputDesktop" oninput="syncSearch(this.value)" placeholder="Cari iPhone 13, Jupiter Z, MacBook, jaket denim..." class="w-full bg-transparent px-4 py-2.5 text-sm text-[#2F2C2A] placeholder-[#78726D] focus:outline-none">
+                        <button id="clearSearchDesktop" onclick="syncSearch('')" class="hidden text-[#78726D] hover:text-[#2F2C2A] px-2">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </button>
+                        <div class="pr-3.5 pl-1 text-[#78726D]">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                    </div>
+                </div>
 
-/* ---------- AUTH ---------- */
-function login(){
-  const e=$('#em').value.trim().toLowerCase(),p=$('#pw').value;
-  const u=load(K.u,[]).find(x=>x.email===e&&x.pw===p);
-  if(!u) return $('#msg').textContent='Email atau kata sandi salah.';
-  save(K.s,u.id);go('home');
-}
-function register(){
-  const v=k=>$('#'+k).value.trim();
-  const em=v('em').toLowerCase(),pw=$('#pw').value,nm=v('nm'),ph=v('ph'),city=v('rc');
-  const users=load(K.u,[]);
-  if(!nm||!em||!ph) return $('#msg').textContent='Lengkapi semua data.';
-  if(pw.length<6) return $('#msg').textContent='Kata sandi minimal 6 karakter.';
-  if(users.some(x=>x.email===em)) return $('#msg').textContent='Email sudah terdaftar.';
-  const u={id:uid(),role:v('role'),name:nm,email:em,pw,phone:ph,city,loc:CITIES[city]};
-  users.push(u);save(K.u,users);save(K.s,u.id);go('home');
-}
-function logout(){localStorage.removeItem(K.s);go('home')}
-const favs=()=>{const u=me();return u?(load(K.f,{})[u.id]||[]):[]};
-function toggleFav(id){const u=me();if(!u)return go('login');const f=load(K.f,{});const l=f[u.id]||[];f[u.id]=l.includes(id)?l.filter(x=>x!==id):[...l,id];save(K.f,f);render()}
-function markSold(id){const it=load(K.i,[]),x=it.find(i=>i.id===id);if(!x)return;x.sold=!x.sold;save(K.i,it);render()}
-function delItem(id){if(!confirm('Hapus iklan ini?'))return;save(K.i,load(K.i,[]).filter(i=>i.id!==id));go('mine')}
-function ownerBtns(i){return `<div class="row" style="margin-top:10px;flex-wrap:wrap"><button class="btn sm" onclick="go('sell','${i.id}')">✏️ Edit</button><button class="btn ghost sm" onclick="markSold('${i.id}')">${i.sold?'Batalkan Terjual':'✅ Tandai Terjual'}</button><button class="btn ghost sm" onclick="delItem('${i.id}')">🗑️ Hapus</button></div>`}
+                <!-- Right Actions: Wishlist & Sell Button -->
+                <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                    <!-- Wishlist Button -->
+                    <button onclick="openWishlistModal()" class="relative p-2.5 sm:px-3.5 sm:py-2.5 rounded-xl bg-[#ADA69C]/30 hover:bg-[#ADA69C]/50 border border-[#ADA69C]/50 text-white transition-colors flex items-center gap-2 cursor-pointer" title="Barang Favorit">
+                        <i class="fa-solid fa-heart text-base text-[#FF8500]"></i>
+                        <span class="hidden lg:inline text-sm font-semibold">Favorit</span>
+                        <span id="wishlistBadge" class="absolute -top-1.5 -right-1.5 sm:static sm:top-auto sm:right-auto bg-[#FF5700] text-white text-[11px] font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center shadow-sm">0</span>
+                    </button>
 
-function vLogin(){
-  return `<div class="card box"><h2>Masuk</h2>
-  <label>Email</label><input id="em" type="email">
-  <label>Kata sandi</label><input id="pw" type="password">
-  <div id="msg" class="err"></div>
-  <button class="btn" style="width:100%" onclick="login()">Masuk</button>
-  <p class="muted">Demo penjual: demo@pasarkita.id / 123456</p>
-  <p class="muted">Belum punya akun? <a onclick="go('register')" style="color:var(--o);cursor:pointer">Daftar</a></p></div>`;
-}
-function vRegister(){
-  return `<div class="card box"><h2>Buat Akun</h2>
-  <label>Daftar sebagai</label><select id="role"><option value="buyer">Pembeli - cari & tawar barang</option><option value="seller">Penjual - jual barang baru/bekas</option></select>
-  <label>Nama lengkap</label><input id="nm">
-  <label>Email</label><input id="em" type="email">
-  <label>Kata sandi (min. 6 karakter)</label><input id="pw" type="password">
-  <label>Nomor telepon (untuk fitur telpon)</label><input id="ph" type="tel" placeholder="08xxxxxxxxxx">
-  <label>Wilayah tempat tinggal</label>${citySelect('rc','Banjarmasin')}
-  <div id="msg" class="err"></div>
-  <button class="btn" style="width:100%" onclick="register()">Daftar</button></div>`;
-}
+                    <!-- Primary Sell CTA Button (#FF8500 -> #FF5700 hover) -->
+                    <button onclick="openSellModal()" class="bg-[#FF8500] hover:bg-[#FF5700] active:scale-[0.98] text-white font-display font-bold text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-md shadow-black/20 transition-all flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-plus text-sm"></i>
+                        <span>Jual Barang</span>
+                    </button>
+                </div>
+            </div>
 
-/* ---------- NAV ---------- */
-function links(u){
-  const a=(v,t)=>`<a class="${S.view===v?'on':''}" onclick="go('${v}')">${t}</a>`;
-  return a('home','🏠 Beranda')+(u?a('fav','❤️ Favorit')+a('chats','💬 Chat'):'')+(u&&u.role==='seller'?a('sell','➕ Jual')+a('mine','📦 Iklan'):'')+(u?'':a('login','Masuk'));
-}
-function header(u){
-  return `<header><div class="logo" onclick="go('home')">Pasar<span>Kita</span></div>
-  <nav class="top">${links(u)}</nav><div class="grow"></div>
-  ${u?`<span class="muted who">Halo, ${esc(u.name)} · <b style="color:var(--o)">${u.role==='seller'?'Penjual':'Pembeli'}</b></span>
-  <button class="btn ghost sm" onclick="logout()">Keluar</button>`:`<button class="btn sm" onclick="go('register')">Daftar</button>`}
-  </header>`;
-}
+            <!-- Mobile Search & Location Bar -->
+            <div class="md:hidden pb-3 flex flex-col sm:flex-row gap-2">
+                <div class="flex items-center bg-[#D6D3CE] rounded-xl border border-[#ADA69C] px-3 py-2 focus-within:bg-white focus-within:border-[#FF8500]">
+                    <i class="fa-solid fa-magnifying-glass text-[#78726D] text-sm mr-2.5"></i>
+                    <input type="text" id="searchInputMobile" oninput="syncSearch(this.value)" placeholder="Cari barang bekas atau lokasi..." class="w-full bg-transparent text-sm text-[#2F2C2A] placeholder-[#78726D] focus:outline-none">
+                    <button id="clearSearchMobile" onclick="syncSearch('')" class="hidden text-[#78726D] hover:text-[#2F2C2A] ml-1">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+                <div class="flex items-center bg-[#D6D3CE] rounded-xl border border-[#ADA69C] px-3 py-2">
+                    <i class="fa-solid fa-location-dot text-[#FF5700] text-sm mr-2"></i>
+                    <select id="locationFilterMobile" onchange="syncLocation(this.value)" class="w-full bg-transparent text-sm font-semibold text-[#2F2C2A] focus:outline-none">
+                        <option value="Semua Kota">Semua Kota</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Sumedang">Sumedang</option>
+                        <option value="Jakarta">Jakarta</option>
+                        <option value="Surabaya">Surabaya</option>
+                        <option value="Yogyakarta">Yogyakarta</option>
+                        <option value="Semarang">Semarang</option>
+                        <option value="Denpasar">Denpasar</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
 
-/* ---------- HOME ---------- */
-function card(i){
-  return `<div class="card item" onclick="go('item','${i.id}')"><div class="pic">${pic(i)}</div>
-  <div class="body"><span class="tag ${i.cond==='Baru'?'new':''}">${i.cond.toUpperCase()}</span><span class="tag">${i.cat}</span>${i.sold?'<span class="tag" style="background:#555">TERJUAL</span>':''}
-  <div class="row" style="justify-content:space-between;align-items:flex-start"><div style="font-weight:600;margin:6px 0 4px">${esc(i.title)}</div><span style="cursor:pointer;font-size:18px" onclick="event.stopPropagation();toggleFav('${i.id}')">${favs().includes(i.id)?'❤️':'🤍'}</span></div>
-  <div class="price">${rp(i.price)}</div>
-  <div class="muted">📍 ${esc(i.city)}${i.d!=null?' · '+i.d.toFixed(1)+' km':''}</div></div></div>`;
-}
-function vHome(){
-  const origin=S.loc||CITIES[S.city];
-  const list=load(K.i,[])
-    .filter(i=>(S.cat==='Semua'||i.cat===S.cat)&&(!S.cond||i.cond===S.cond)&&(!S.q||matchQ(i.title+' '+i.desc,S.q))&&(!S.pmin||i.price>=+S.pmin)&&(!S.pmax||i.price<=+S.pmax))
-    .map(i=>({...i,d:dist(origin,i.loc)}))
-    .filter(i=>!S.rad||i.d<=+S.rad);
-  list.sort(S.sort==='dist'?(a,b)=>a.d-b.d:S.sort==='low'?(a,b)=>a.price-b.price:(a,b)=>b.ts-a.ts);
-  const tiles=['Semua',...CATS].map(c=>`<div class="tile ${S.cat===c?'on':''}" onclick="S.cat='${c}';render()"><div class="ti">${c==='Semua'?'🛍️':EMO[c]}</div>${c}</div>`).join('');
-  return `<div class="hero"><h1>Jual Beli <span>Baru & Bekas</span></h1>
-  <p class="muted">Temukan barang terdekat dari lokasimu, lalu nego langsung lewat chat.</p>
-  <div class="row" style="flex-wrap:wrap">
-    <input id="q" placeholder="Cari barang..." value="${esc(S.q)}" style="flex:1;min-width:180px;margin:0" onchange="S.q=this.value;save('pk_lastq',S.q);render()">
-    <button class="btn sm" onclick="useGPS()">📍 Lokasi saya</button>
-    <select style="width:auto;margin:0" onchange="S.city=this.value;S.loc=null;render()">${Object.keys(CITIES).map(c=>`<option ${c===S.city&&!S.loc?'selected':''}>${c}</option>`).join('')}</select>
-  </div>
-  <p class="muted" style="margin:10px 0 0">${S.loc?'Diurutkan dari lokasi GPS kamu.':'Lokasi: '+S.city+' (tekan 📍 untuk lokasi akurat)'}</p></div>
-  <div class="tiles">${tiles}</div>
-  <div class="row" style="margin-bottom:16px;flex-wrap:wrap">
-    <select style="width:auto;margin:0" onchange="S.cond=this.value;render()"><option value="">Baru & Bekas</option><option ${S.cond==='Baru'?'selected':''}>Baru</option><option ${S.cond==='Bekas'?'selected':''}>Bekas</option></select>
-    <select style="width:auto;margin:0" onchange="S.sort=this.value;render()"><option value="dist" ${S.sort==='dist'?'selected':''}>Terdekat</option><option value="low" ${S.sort==='low'?'selected':''}>Harga terendah</option><option value="new" ${S.sort==='new'?'selected':''}>Terbaru</option></select>
-    <select style="width:auto;margin:0" onchange="S.rad=this.value;render()"><option value="">Semua jarak</option>${[5,20,50].map(r=>`<option value="${r}" ${S.rad==r?'selected':''}>≤ ${r} km</option>`).join('')}</select>
-    <input type="number" placeholder="Harga min" value="${S.pmin}" style="width:130px;margin:0" onchange="S.pmin=this.value;render()">
-    <input type="number" placeholder="Harga max" value="${S.pmax}" style="width:130px;margin:0" onchange="S.pmax=this.value;render()">
-    <span class="muted">${list.length} barang</span>
-  </div>
-  <div class="grid">${list.map(card).join('')||'<p class="muted">Belum ada barang. Penjual bisa mengunggah lewat menu Jual.</p>'}</div>`;
-}
-function useGPS(){
-  if(!navigator.geolocation) return alert('Browser tidak mendukung lokasi.');
-  navigator.geolocation.getCurrentPosition(p=>{S.loc=[p.coords.latitude,p.coords.longitude];S.sort='dist';render()},()=>alert('Izin lokasi ditolak. Pilih kota secara manual.'));
-}
+    <!-- ==================== HERO BANNER (#78726D + #ADA69C Industrial Warmth) ==================== -->
+    <section class="bg-gradient-to-br from-[#78726D] via-[#6B6560] to-[#5C5752] text-white relative overflow-hidden border-b border-[#ADA69C]/40">
+        <!-- Decorative Circles -->
+        <div class="absolute -top-24 -right-24 w-72 h-72 bg-[#FF8500]/25 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-16 w-64 h-64 bg-[#FF5700]/20 rounded-full blur-2xl pointer-events-none"></div>
 
-/* ---------- ITEM ---------- */
-function vItem(u){
-  const i=load(K.i,[]).find(x=>x.id===S.id);
-  if(!i) return '<p>Barang tidak ditemukan.</p>';
-  const s=load(K.u,[]).find(x=>x.id===i.sellerId)||{name:'-',phone:''};
-  const isOwner=u&&u.id===i.sellerId;
-  const action=!u?`<p class="muted"><a onclick="go('login')" style="color:var(--o);cursor:pointer">Masuk</a> untuk chat atau menelepon penjual.</p>`
-    :isOwner?ownerBtns(i)
-    :`<div class="row" style="margin-top:10px;flex-wrap:wrap">${i.sold?'<span class="tag">TERJUAL · chat dikunci</span>':`<button class="btn" onclick="startChat('${i.id}')">💬 Chat & nego</button>`}<button class="btn ghost" onclick="toggleFav('${i.id}')">${favs().includes(i.id)?'❤️ Disimpan':'🤍 Simpan'}</button><a class="btn ghost" href="tel:${esc(s.phone)}">📞 Telepon</a></div>`;
-  return `<div class="layout"><div class="card">${gallery(i)}</div>
-  <div><span class="tag ${i.cond==='Baru'?'new':''}">${i.cond}</span><span class="tag">${i.cat}</span>${i.sold?'<span class="tag" style="background:#555">TERJUAL</span>':''}
-  <h2 style="margin:10px 0 4px">${esc(i.title)}</h2><div class="price" style="font-size:24px">${rp(i.price)}</div>
-  <p class="muted">📍 ${esc(i.city)}${i.alamat?' - '+esc(i.alamat):''}</p>
-  <p>${esc(i.desc).replace(/\n/g,'<br>')}</p>
-  ${specHtml(i)}<div class="card" style="padding:14px;margin-top:16px"><b>${esc(s.name)}</b> <span class="muted">Penjual</span>${action}</div>
-  </div></div>`;
-}
-function startChat(itemId){
-  const u=me(); if(!u) return go('login');
-  const i=load(K.i,[]).find(x=>x.id===itemId);
-  if(!i||u.id===i.sellerId) return;
-  const chats=load(K.c,[]);
-  let c=chats.find(x=>x.itemId===itemId&&x.buyerId===u.id);
-  if(!c){c={id:uid(),itemId,buyerId:u.id,sellerId:i.sellerId,msgs:[]};chats.push(c);save(K.c,chats)}
-  go('chat',c.id);
-}
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-10 relative z-10">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ADA69C]/30 border border-[#ADA69C]/50 text-[#D6D3CE] text-xs font-semibold mb-3">
+                        <span class="w-2 h-2 rounded-full bg-[#FF8500] animate-pulse"></span>
+                        Transaksi Aman & Bisa Nego Langsung
+                    </div>
+                    <h1 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl leading-tight text-white">
+                        Ubah Barang Tak Terpakai Jadi Cuan, Temukan Barang Impian Harga Hemat!
+                    </h1>
+                    <p class="text-[#D6D3CE] text-sm sm:text-base mt-2.5 leading-relaxed">
+                        Ribuan pilihan handphone, motor, mobil, laptop, hingga fashion bekas terawat dari penjual terpercaya di kotamu.
+                    </p>
+                </div>
+                <div class="flex flex-wrap sm:flex-nowrap gap-3 w-full md:w-auto shrink-0">
+                    <button onclick="openSellModal()" class="flex-1 md:flex-initial bg-[#FF8500] hover:bg-[#FF5700] text-white font-display font-bold text-sm px-5 py-3.5 rounded-xl shadow-lg shadow-black/20 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>Pasang Iklan Gratis</span>
+                    </button>
+                    <a href="#katalog-section" class="flex-1 md:flex-initial bg-[#ADA69C]/30 hover:bg-[#ADA69C]/45 text-white font-semibold text-sm px-5 py-3.5 rounded-xl border border-[#ADA69C] transition-all flex items-center justify-center gap-2">
+                        <span>Jelajahi Barang</span>
+                        <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* ---------- CHAT ---------- */
-function vChats(u){
-  const chats=load(K.c,[]).filter(c=>c.buyerId===u.id||c.sellerId===u.id);
-  const items=load(K.i,[]),users=load(K.u,[]);
-  if(!chats.length) return '<p class="muted">Belum ada percakapan. Buka sebuah barang lalu tekan "Chat & nego".</p>';
-  return '<h2>Chat</h2>'+chats.map(c=>{
-    const it=items.find(x=>x.id===c.itemId)||{title:'(barang dihapus)'};
-    const other=users.find(x=>x.id===(c.buyerId===u.id?c.sellerId:c.buyerId))||{name:'-'};
-    const last=c.msgs[c.msgs.length-1];
-    const preview=!last?'Mulai percakapan':last.type==='img'?'📷 Foto':last.type==='offer'?'💰 Tawaran '+rp(last.text):last.type==='call'?'📞 Panggilan telepon':last.type==='loc'?'📍 Lokasi':esc(last.text);
-    return `<div class="card" style="padding:14px;margin-bottom:10px;cursor:pointer" onclick="go('chat','${c.id}')"><b>${esc(other.name)}</b> <span class="muted">· ${esc(it.title)}</span><div class="muted" style="margin-top:4px">${preview}</div></div>`;
-  }).join('');
-}
-function bubble(m,u){
-  const mine=m.from===u.id;
-  let body;
-  if(m.type==='img') body=`<img src="${m.img}" alt="foto">`;
-  else if(m.type==='offer') body=`💰 Tawaran <b>${rp(m.text)}</b>`;
-  else if(m.type==='call') body='📞 Panggilan telepon';
-  else if(m.type==='loc') body=`📍 <a href="https://www.google.com/maps?q=${m.text}" target="_blank" rel="noopener" style="color:inherit">Buka lokasi di peta</a>`;
-  else body=esc(m.text);
-  return `<div class="bub ${mine?'me':''}">${body}<div class="muted" style="font-size:10px;margin-top:3px;text-align:right">${new Date(m.ts).toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})}</div></div>`;
-}
-function vChat(u){
-  const c=load(K.c,[]).find(x=>x.id===S.id);
-  if(!c) return '<p>Percakapan tidak ditemukan.</p>';
-  const users=load(K.u,[]),items=load(K.i,[]);
-  const it=items.find(x=>x.id===c.itemId)||{title:'-',price:0};
-  const other=users.find(x=>x.id===(c.buyerId===u.id?c.sellerId:c.buyerId))||{name:'-',phone:'',role:''};
-  return `<div class="card" style="padding:14px;margin-bottom:12px"><div class="row" style="justify-content:space-between;flex-wrap:wrap">
-    <div><b>${esc(other.name)}</b> <span class="tag">${other.role==='seller'?'Penjual':'Pembeli'}</span><div class="muted">${esc(it.title)} · ${rp(it.price)}</div></div>
-    <a class="btn sm" href="tel:${esc(other.phone)}" onclick="logCall('${c.id}')">📞 Telepon</a></div></div>
-  ${it.sold?'<div class="card" style="padding:12px;margin-bottom:12px;border-color:var(--o)">🔒 Barang ini sudah terjual. Chat dikunci.</div>':''}<div class="card"><div class="msgs" id="msgs">${c.msgs.map(m=>bubble(m,u)).join('')||'<p class="muted" style="text-align:center">Mulai nego dengan sopan 👋</p>'}</div>
-    <div style="padding:12px;border-top:1px solid var(--line)">
-      <div class="row" style="flex-wrap:wrap;margin-bottom:8px">
-        <button class="btn ghost sm" onclick="sendOffer('${c.id}')">💰 Tawar harga</button>
-        <label class="btn ghost sm" style="cursor:pointer;color:var(--text)">📷 Kirim foto<input type="file" accept="image/*" hidden onchange="sendPhoto('${c.id}',this)"></label>
-        <button class="btn ghost sm" onclick="quick('${c.id}','Masih tersedia?')">Masih tersedia?</button>
-        <button class="btn ghost sm" onclick="quick('${c.id}','Bisa nego?')">Bisa nego?</button>
-        <button class="btn ghost sm" onclick="quick('${c.id}','Setuju, deal ya!')">Setuju</button>
-        <button class="btn ghost sm" onclick="sendLoc('${c.id}')">📍 Kirim lokasi</button>
-      </div>
-      <div class="row"><input id="txt" placeholder="Tulis pesan..." style="margin:0;flex:1" onkeydown="if(event.key==='Enter')sendText('${c.id}')"><button class="btn" onclick="sendText('${c.id}')">Kirim</button></div>
-    </div></div>`;
-}
-function pushMsg(cid,m){
-  const chats=load(K.c,[]),c=chats.find(x=>x.id===cid); if(!c) return; if((load(K.i,[]).find(x=>x.id===c.itemId)||{}).sold){alert('Barang sudah terjual, chat dikunci.');return}
-  c.msgs.push({...m,from:me().id,ts:Date.now()});
-  if(save(K.c,chats)) render();
-}
-function sendText(cid){const t=$('#txt').value.trim(); if(t) pushMsg(cid,{type:'text',text:t})}
-function quick(cid,t){pushMsg(cid,{type:'text',text:t})}
-function sendOffer(cid){
-  const n=parseInt(String(prompt('Masukkan harga tawaranmu (Rp):')||'').replace(/\D/g,''),10);
-  if(n>0) pushMsg(cid,{type:'offer',text:String(n)});
-}
-function logCall(cid){pushMsg(cid,{type:'call',text:''})}
-function sendPhoto(cid,el){
-  const f=el.files[0]; if(!f) return;
-  shrink(f,720,img=>pushMsg(cid,{type:'img',img}));
-}
+    <!-- ==================== INTERACTIVE CATEGORIES ==================== -->
+    <section id="katalog-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-7 pb-3">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="font-display font-bold text-lg sm:text-xl text-[#2F2C2A]">Kategori Pilihan</h2>
+            <span class="text-xs text-[#78726D] font-semibold">Pilih kategori untuk menyaring</span>
+        </div>
 
-/* ---------- SELL & MY ITEMS ---------- */
-function vSell(u){
-  const e=S.id?load(K.i,[]).find(x=>x.id===S.id):null;
-  if(u.role!=='seller') return '<p class="muted">Fitur ini khusus akun penjual. Daftar sebagai penjual untuk mengunggah iklan.</p>';
-  return `<div class="card wrap" style="padding:24px"><h2>${e?'Edit Iklan':'Unggah Iklan Baru'}</h2>
-  <label>Judul barang</label><input id="t" value="${esc(e?e.title:'')}">
-  <div class="layout" style="gap:12px"><div><label>Kategori</label><select id="cat" onchange="$('#specs').innerHTML=specInputs(this.value)">${CATS.map(c=>`<option ${e&&e.cat===c?'selected':''}>${c}</option>`).join('')}</select></div>
-  <div><label>Kondisi</label><select id="cd"><option ${e&&e.cond==='Baru'?'selected':''}>Baru</option><option ${e&&e.cond==='Bekas'?'selected':''}>Bekas</option></select></div></div>
-  <div id="specs">${specInputs(e?e.cat:CATS[0],e)}</div>
-  <label>Harga (Rp)</label><input id="pr" inputmode="numeric" value="${e?e.price:''}">
-  <label>Wilayah (kota/kabupaten)</label>${citySelect('ct',e?e.city:u.city)}
-  <label>Alamat / patokan lokasi</label><input id="al" placeholder="Contoh: Jl. A. Yani Km 4, dekat Mall ..." value="${esc(e?e.alamat:'')}">
-  <label>Deskripsi</label><textarea id="ds" rows="4">${esc(e?e.desc:'')}</textarea>
-  <label>Foto barang (maks. 5 foto)</label><input id="ph" type="file" accept="image/*" multiple>
-  <div id="msg" class="err"></div>
-  <button class="btn" style="width:100%" onclick="publishItem()">${e?'Simpan Perubahan':'Terbitkan Iklan'}</button></div>`;
-}
-function publishItem(){
-  const g=k=>$('#'+k).value.trim(),u=me();
-  if(!g('t')||!g('pr')) return $('#msg').textContent='Judul dan harga wajib diisi.';
-  const city=g('ct');
-  const finish=photo=>{
-    const items=load(K.i,[]);
-    const spec={};document.querySelectorAll('[data-spec]').forEach(x=>{if(x.value.trim())spec[x.dataset.spec]=x.value.trim()});
-    const old=S.id?items.find(x=>x.id===S.id):null;
-    const data={title:g('t'),cat:g('cat'),cond:g('cd'),price:+g('pr').replace(/\D/g,''),desc:g('ds'),alamat:g('al'),city,loc:CITIES[city],photos:photo.length?photo:(old?(old.photos||(old.photo?[old.photo]:[])):[]),spec};
-    if(old) Object.assign(old,data); else items.push({id:uid(),sellerId:u.id,...data,sold:false,ts:Date.now()});
-    if(save(K.i,items)) go('mine');
-  };
-  const fs=[...$('#ph').files].slice(0,5),out=[];
-  const next=()=>{if(out.length<fs.length)shrink(fs[out.length],800,p=>{out.push(p);next()});else finish(out)};
-  fs.length?next():finish([]);
-}
-function gallery(i){const ps=i.photos&&i.photos.length?i.photos:(i.photo?[i.photo]:[]);return ps.length?`<div style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory">${ps.map(p=>`<img src="${p}" alt="" style="flex:0 0 100%;width:100%;aspect-ratio:4/3;object-fit:cover;scroll-snap-align:start;display:block">`).join('')}</div>`:`<div class="ph" style="aspect-ratio:4/3">${EMO[i.cat]||'📦'}</div>`}
-const SPECS={Otomotif:['Tahun','Kilometer','Transmisi'],Gadget:['Kapasitas','Kesehatan baterai','Kelengkapan'],Pakaian:['Ukuran','Bahan','Merek'],_:['Merek','Ukuran','Usia pakai']};
-function specInputs(cat,e){return (SPECS[cat]||SPECS._).map(l=>`<label>${l}</label><input data-spec="${l}" value="${esc(e&&e.spec?e.spec[l]:'')}">`).join('')}
-function specHtml(i){const x=Object.entries(i.spec||{});return x.length?`<table style="width:100%;font-size:14px;margin:10px 0;border-collapse:collapse">${x.map(([k,v])=>`<tr><td class="muted" style="padding:6px 0;width:45%">${esc(k)}</td><td style="padding:6px 0"><b>${esc(v)}</b></td></tr>`).join('')}</table>`:''}
-function sendLoc(cid){if(!navigator.geolocation)return alert('Browser tidak mendukung lokasi.');navigator.geolocation.getCurrentPosition(p=>pushMsg(cid,{type:'loc',text:p.coords.latitude.toFixed(6)+','+p.coords.longitude.toFixed(6)}),()=>alert('Izin lokasi ditolak.'))}
-function lev(a,b){const m=[];for(let i=0;i<=b.length;i++)m[i]=[i];for(let j=0;j<=a.length;j++)m[0][j]=j;for(let i=1;i<=b.length;i++)for(let j=1;j<=a.length;j++)m[i][j]=Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(b[i-1]===a[j-1]?0:1));return m[b.length][a.length]}
-function matchQ(text,q){const t=text.toLowerCase();const words=t.split(/[^a-z0-9]+/).filter(Boolean);return q.toLowerCase().split(/\s+/).filter(Boolean).every(w=>t.includes(w)||words.some(x=>w.length>=4&&lev(w,x)<=1))}
-function vFav(u){const ids=favs();const items=load(K.i,[]).filter(i=>ids.includes(i.id));return `<h2>Favorit Saya</h2><div class="grid">${items.map(card).join('')||'<p class="muted">Belum ada favorit. Tekan ❤️ pada barang yang kamu minati.</p>'}</div>`}
-function vMine(u){
-  const items=load(K.i,[]).filter(i=>i.sellerId===u.id);
-  return `<h2>Iklan Saya</h2><div class="grid">${items.map(card).join('')||'<p class="muted">Belum ada iklan. Tekan menu Jual untuk mengunggah.</p>'}</div>`;
-}
+        <!-- Category Cards Grid -->
+        <div id="categoryContainer" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-3.5">
+            <!-- Rendered dynamically by JS -->
+        </div>
+    </section>
 
-/* ---------- RENDER ---------- */
-function render(){
-  const u=me();
-  const views={
-    home:()=>vHome(),
-    login:vLogin,
-    register:vRegister,
-    item:()=>vItem(u),
-    fav:()=>u?vFav(u):vLogin(),
-    chats:()=>u?vChats(u):vLogin(),
-    chat:()=>u?vChat(u):vLogin(),
-    sell:()=>u?vSell(u):vLogin(),
-    mine:()=>u?vMine(u):vLogin()
-  };
-  const page=(views[S.view]||views.home)();
-  $('#app').innerHTML=header(u)+`<main>${page}</main>`;
-  $('#tabbar').innerHTML=links(u);
-  const m=document.getElementById('msgs'); if(m) m.scrollTop=m.scrollHeight;
-}
+    <!-- ==================== MAIN CATALOG SECTION ==================== -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20">
+        <!-- Toolbar: Active Filter Info & Sort Controls -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#ADA69C]/35 p-4 rounded-2xl border border-[#ADA69C] shadow-sm mb-6">
+            <div class="flex flex-wrap items-center gap-2">
+                <h3 id="catalogHeading" class="font-display font-bold text-base sm:text-lg text-[#2F2C2A]">
+                    Semua Barang Bekas
+                </h3>
+                <span id="itemCountBadge" class="bg-[#FF5700] text-white text-xs font-bold px-2.5 py-0.5 rounded-full shadow-xs">
+                    0 barang
+                </span>
+                <button id="resetFilterBtn" onclick="resetAllFilters()" class="hidden text-xs font-bold text-white bg-[#78726D] hover:bg-[#FF5700] px-2.5 py-1 rounded-lg transition-colors ml-1 cursor-pointer">
+                    <i class="fa-solid fa-rotate-left mr-1"></i>Reset Filter
+                </button>
+            </div>
 
-/* ---------- SEED DEMO DATA (sekali saja) ---------- */
-if(!load(K.u,[]).length){
-  save(K.u,[{id:'demo1',role:'seller',name:'Toko Demo',email:'demo@pasarkita.id',pw:'123456',phone:'081234567890',city:'Banjarmasin',loc:CITIES.Banjarmasin}]);
-  const now=Date.now();
-  save(K.i,[
-    {id:'a1',sellerId:'demo1',title:'Honda Beat 2019 Mulus',cat:'Otomotif',cond:'Bekas',price:12500000,desc:'Pajak hidup, surat lengkap, servis rutin.',alamat:'Jl. A. Yani',city:'Banjarmasin',loc:CITIES.Banjarmasin,photo:'',ts:now-3e5},
-    {id:'a2',sellerId:'demo1',title:'iPhone 15 Pro 256GB',cat:'Gadget',cond:'Bekas',price:13900000,desc:'Baterai 92%, fullset, tidak ada minus.',alamat:'Dekat Duta Mall',city:'Banjarmasin',loc:CITIES.Banjarmasin,photo:'',ts:now-2e5},
-    {id:'a3',sellerId:'demo1',title:'Jaket Denim Baru Size L',cat:'Pakaian',cond:'Baru',price:185000,desc:'Belum pernah dipakai, label masih ada.',alamat:'Banjarbaru',city:'Banjarbaru',loc:CITIES.Banjarbaru,photo:'',ts:now-1e5}
-  ]);
-}
+            <!-- Sort Dropdown -->
+            <div class="flex items-center gap-2 self-start sm:self-auto">
+                <label for="sortSelect" class="text-xs font-bold text-[#78726D] whitespace-nowrap">
+                    <i class="fa-solid fa-arrow-up-wide-short mr-1 text-[#FF5700]"></i>Urutkan:
+                </label>
+                <select id="sortSelect" onchange="handleSortChange(this.value)" class="bg-white border border-[#ADA69C] text-[#2F2C2A] text-xs sm:text-sm font-semibold rounded-xl px-3 py-2 focus:outline-none focus:border-[#FF8500] cursor-pointer">
+                    <option value="newest">Terbaru Diposting</option>
+                    <option value="price-asc">Harga Terendah</option>
+                    <option value="price-desc">Harga Tertinggi</option>
+                </select>
+            </div>
+        </div>
 
-window.addEventListener('storage',()=>render());
-render();
-</script>
+        <!-- Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            <!-- Product Cards injected via JS -->
+        </div>
+
+        <!-- Empty State (Shown when no matches) -->
+        <div id="emptyState" class="hidden bg-white rounded-3xl border border-[#ADA69C] p-10 sm:p-16 text-center max-w-lg mx-auto my-8 shadow-sm">
+            <div class="w-20 h-20 bg-[#D6D3CE] text-[#78726D] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                <i class="fa-solid fa-box-open"></i>
+            </div>
+            <h4 class="font-display font-bold text-xl text-[#2F2C2A] mb-2">Barang Tidak Ditemukan</h4>
+            <p class="text-sm text-[#78726D] mb-6 leading-relaxed">
+                Maaf, belum ada barang bekas yang sesuai dengan kata kunci, kategori, atau kota yang kamu pilih.
+            </p>
+            <button onclick="resetAllFilters()" class="bg-[#FF8500] hover:bg-[#FF5700] text-white font-semibold text-sm px-6 py-3 rounded-xl shadow-sm transition-all cursor-pointer">
+                Tampilkan Semua Barang
+            </button>
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER (#78726D Dim Gray Surface) ==================== -->
+    <footer class="bg-[#78726D] border-t border-[#ADA69C]/40 text-[#D6D3CE]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FF8500] to-[#FF5700] flex items-center justify-center text-white">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                        <span class="font-display font-extrabold text-xl text-white">Bar<span class="text-[#FF8500]">kas</span></span>
+                    </div>
+                    <p class="text-sm text-[#D6D3CE] max-w-md leading-relaxed">
+                        Platform jual beli barang bekas berkualitas di Indonesia. Dukung gaya hidup berkelanjutan dengan memberi kesempatan kedua pada barang-barang yang masih layak pakai.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-display font-bold text-white text-sm mb-3">Kategori Populer</h5>
+                    <ul class="space-y-2 text-sm text-[#D6D3CE]">
+                        <li><button onclick="selectCategory('Handphone')" class="hover:text-[#FF8500] transition-colors cursor-pointer">Handphone & Gadget</button></li>
+                        <li><button onclick="selectCategory('Motor')" class="hover:text-[#FF8500] transition-colors cursor-pointer">Motor Bekas</button></li>
+                        <li><button onclick="selectCategory('Mobil')" class="hover:text-[#FF8500] transition-colors cursor-pointer">Mobil Bekas</button></li>
+                        <li><button onclick="selectCategory('Laptop')" class="hover:text-[#FF8500] transition-colors cursor-pointer">Laptop & Komputer</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-display font-bold text-white text-sm mb-3">Tips Aman Bertransaksi</h5>
+                    <ul class="space-y-2 text-xs text-[#D6D3CE] leading-relaxed">
+                        <li><i class="fa-solid fa-shield-halved text-[#FF8500] mr-1.5"></i>Utamakan COD di tempat ramai & aman</li>
+                        <li><i class="fa-solid fa-check-circle text-[#FF8500] mr-1.5"></i>Cek fisik & kelengkapan barang</li>
+                        <li><i class="fa-solid fa-comments text-[#FF8500] mr-1.5"></i>Gunakan fitur Nego sebelum membeli</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-[#ADA69C]/40 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#ADA69C] gap-2">
+                <p>&copy; 2026 Barkas Indonesia. Hak Cipta Dilindungi.</p>
+                <p>Dibuat untuk kemudahan jual beli barang bekas terpercaya.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODAL 1: PRODUCT DETAIL & CHAT/NEGO ==================== -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-[#2F2C2A]/70 backdrop-blur-sm p-3 sm:p-6 flex items-center justify-center">
+        <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden animate-slide-up my-auto border border-[#ADA69C]">
+            <!-- Top Modal Bar -->
+            <div class="flex items-center justify-between px-5 py-3.5 border-b border-[#ADA69C]/50 bg-[#D6D3CE]">
+                <div class="flex items-center gap-2 text-xs font-semibold text-[#78726D]">
+                    <span id="detailCategoryBadge" class="bg-[#78726D] text-white px-2.5 py-1 rounded-lg">Kategori</span>
+                    <span>•</span>
+                    <span id="detailTimeBadge" class="text-[#2F2C2A]">Baru saja</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="detailWishlistBtn" onclick="toggleWishlistFromDetail()" class="p-2 rounded-xl bg-white/80 hover:bg-white text-[#78726D] transition-colors cursor-pointer" title="Simpan ke Favorit">
+                        <i class="fa-regular fa-heart text-lg"></i>
+                    </button>
+                    <button onclick="closeModal('detailModal')" class="w-9 h-9 rounded-xl bg-[#78726D] hover:bg-[#FF5700] text-white flex items-center justify-center transition-colors cursor-pointer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="grid grid-cols-1 md:grid-cols-12 max-h-[82vh] overflow-y-auto">
+                <!-- Left Column: Image & Seller -->
+                <div class="md:col-span-6 bg-[#D6D3CE]/50 flex flex-col justify-between">
+                    <div class="relative aspect-[4/3] w-full bg-[#D6D3CE] overflow-hidden">
+                        <img id="detailImage" src="" alt="Foto Barang" class="w-full h-full object-cover">
+                        <span id="detailConditionBadge" class="absolute bottom-3 left-3 bg-[#78726D]/95 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-xl border border-[#ADA69C]/40">
+                            Mulus 95%
+                        </span>
+                    </div>
+                    <!-- Seller Card -->
+                    <div class="p-4 sm:p-5 bg-white border-t border-[#ADA69C]/50">
+                        <p class="text-[11px] font-bold uppercase tracking-wider text-[#78726D] mb-2">Informasi Penjual</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div id="detailSellerAvatar" class="w-11 h-11 rounded-full bg-[#78726D] text-white font-display font-bold flex items-center justify-center text-base">
+                                    AR
+                                </div>
+                                <div>
+                                    <h4 id="detailSellerName" class="font-bold text-sm text-[#2F2C2A] flex items-center gap-1.5">
+                                        Nama Penjual
+                                        <i class="fa-solid fa-circle-check text-[#FF8500] text-xs" title="Terverifikasi"></i>
+                                    </h4>
+                                    <p id="detailLocation" class="text-xs text-[#78726D] flex items-center gap-1 mt-0.5">
+                                        <i class="fa-solid fa-location-dot text-[#FF5700]"></i> Bandung
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-[#FF5700] bg-[#FF8500]/15 px-2.5 py-1 rounded-lg border border-[#FF8500]/40">
+                                Aktif
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Info, Description, Tabs (Detail vs Chat Nego) -->
+                <div class="md:col-span-6 p-5 sm:p-6 flex flex-col justify-between bg-white">
+                    <div>
+                        <h2 id="detailTitle" class="font-display font-extrabold text-xl sm:text-2xl text-[#2F2C2A] leading-snug">
+                            Judul Barang
+                        </h2>
+                        <div class="mt-2 flex items-center flex-wrap gap-2">
+                            <span id="detailPrice" class="font-display font-extrabold text-2xl sm:text-3xl text-[#FF5700]">
+                                Rp 0
+                            </span>
+                            <span class="text-xs font-bold bg-[#FF5700]/10 text-[#FF5700] border border-[#FF5700]/30 px-2.5 py-0.5 rounded-full">Bisa Nego</span>
+                        </div>
+
+                        <!-- Mode Switcher: Info Barang vs Ruang Nego -->
+                        <div class="flex gap-2 p-1 bg-[#D6D3CE] rounded-xl mt-4">
+                            <button id="tabInfoBtn" onclick="switchDetailTab('info')" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white text-[#2F2C2A] shadow-sm transition-all cursor-pointer">
+                                <i class="fa-solid fa-circle-info mr-1.5 text-[#78726D]"></i>Deskripsi Barang
+                            </button>
+                            <button id="tabChatBtn" onclick="switchDetailTab('chat')" class="flex-1 py-2 text-xs font-bold rounded-lg text-[#78726D] hover:text-[#2F2C2A] transition-all cursor-pointer">
+                                <i class="fa-solid fa-comments-dollar mr-1.5 text-[#FF5700]"></i>Chat & Nego Harga
+                            </button>
+                        </div>
+
+                        <!-- TAB 1: Product Description -->
+                        <div id="detailInfoPane" class="mt-4 space-y-4">
+                            <div class="grid grid-cols-2 gap-2.5 text-xs">
+                                <div class="bg-[#D6D3CE]/55 p-3 rounded-xl border border-[#ADA69C]/60">
+                                    <span class="text-[#78726D] block mb-0.5">Kondisi Fisik</span>
+                                    <span id="detailConditionText" class="font-bold text-[#2F2C2A]">Mulus 95%</span>
+                                </div>
+                                <div class="bg-[#D6D3CE]/55 p-3 rounded-xl border border-[#ADA69C]/60">
+                                    <span class="text-[#78726D] block mb-0.5">Lokasi COD</span>
+                                    <span id="detailLocationText" class="font-bold text-[#2F2C2A]">Bandung</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-bold uppercase tracking-wider text-[#78726D] mb-1.5">Deskripsi Lengkap</h5>
+                                <p id="detailDescription" class="text-sm text-[#2F2C2A]/90 leading-relaxed whitespace-pre-line">
+                                    Deskripsi lengkap barang akan muncul di sini.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- TAB 2: Real-time Interactive Chat & Nego -->
+                        <div id="detailChatPane" class="hidden mt-4 flex flex-col h-64 bg-[#D6D3CE]/45 rounded-2xl border border-[#ADA69C] overflow-hidden">
+                            <!-- Chat Messages Area -->
+                            <div id="chatMessagesBox" class="flex-1 p-3.5 overflow-y-auto space-y-2.5 text-xs">
+                                <!-- Chat bubbles injected dynamically -->
+                            </div>
+                            <!-- Quick Offer Chips -->
+                            <div class="px-3 py-1.5 bg-white border-t border-[#ADA69C]/50 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                                <span class="text-[10px] font-bold text-[#78726D] shrink-0">Tawar Cepat:</span>
+                                <button type="button" onclick="sendQuickOffer(0.95)" class="shrink-0 bg-[#FF8500]/15 hover:bg-[#FF5700] hover:text-white text-[#FF5700] border border-[#FF8500]/40 text-[11px] font-bold px-2.5 py-0.5 rounded-full transition-colors cursor-pointer">
+                                    -5%
+                                </button>
+                                <button type="button" onclick="sendQuickOffer(0.90)" class="shrink-0 bg-[#FF8500]/15 hover:bg-[#FF5700] hover:text-white text-[#FF5700] border border-[#FF8500]/40 text-[11px] font-bold px-2.5 py-0.5 rounded-full transition-colors cursor-pointer">
+                                    -10%
+                                </button>
+                                <button type="button" onclick="sendQuickText('Halo kak, barang ini masih ada?')" class="shrink-0 bg-[#D6D3CE] hover:bg-[#ADA69C] text-[#2F2C2A] text-[11px] font-semibold px-2.5 py-0.5 rounded-full transition-colors cursor-pointer">
+                                    Masih ada?
+                                </button>
+                            </div>
+                            <!-- Chat Input -->
+                            <form onsubmit="handleSendChat(event)" class="p-2 bg-white border-t border-[#ADA69C]/50 flex gap-2">
+                                <input type="text" id="chatInput" placeholder="Ketik pesan atau angka tawaran..." class="flex-1 bg-[#D6D3CE]/60 rounded-xl px-3 py-2 text-xs text-[#2F2C2A] placeholder-[#78726D] focus:outline-none focus:ring-2 focus:ring-[#FF8500]">
+                                <button type="submit" class="bg-[#FF8500] hover:bg-[#FF5700] text-white px-3.5 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Action Buttons -->
+                    <div class="mt-6 pt-4 border-t border-[#ADA69C]/50 flex flex-col sm:flex-row gap-2.5">
+                        <button onclick="switchDetailTab('chat')" class="flex-1 bg-[#D6D3CE] hover:bg-[#ADA69C] text-[#2F2C2A] border border-[#ADA69C] font-display font-bold text-sm py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fa-regular fa-comment-dots text-[#FF5700]"></i>
+                            <span>Chat / Nego</span>
+                        </button>
+                        <button onclick="openCheckoutModal()" class="flex-1 bg-[#FF8500] hover:bg-[#FF5700] text-white font-display font-bold text-sm py-3 px-4 rounded-xl shadow-md shadow-[#FF5700]/25 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>Beli Sekarang</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL 2: CHECKOUT SIMULATION ==================== -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-[#2F2C2A]/70 backdrop-blur-sm p-4 flex items-center justify-center">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden animate-slide-up border border-[#ADA69C]">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-[#ADA69C]/50 bg-[#78726D] text-white">
+                <h3 class="font-display font-extrabold text-lg">
+                    <i class="fa-solid fa-shield-check text-[#FF8500] mr-2"></i>Checkout Barang
+                </h3>
+                <button onclick="closeModal('checkoutModal')" class="w-8 h-8 rounded-xl bg-white/15 hover:bg-[#FF5700] text-white flex items-center justify-center cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form onsubmit="processCheckout(event)" class="p-6 space-y-4">
+                <!-- Item Summary -->
+                <div class="flex items-center gap-3.5 p-3.5 bg-[#D6D3CE]/55 rounded-2xl border border-[#ADA69C]">
+                    <img id="checkoutImg" src="" alt="Produk" class="w-16 h-16 rounded-xl object-cover bg-[#D6D3CE] shrink-0">
+                    <div class="min-w-0 flex-1">
+                        <h4 id="checkoutTitle" class="font-bold text-sm text-[#2F2C2A] truncate">Nama Barang</h4>
+                        <p id="checkoutSeller" class="text-xs text-[#78726D] mt-0.5">Penjual • Kota</p>
+                        <p id="checkoutPrice" class="font-display font-extrabold text-base text-[#FF5700] mt-1">Rp 0</p>
+                    </div>
+                </div>
+
+                <!-- Buyer Name & Phone -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-[#2F2C2A] mb-1">Nama Penerima *</label>
+                        <input type="text" id="buyerName" required placeholder="Contoh: Budi Santoso" class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-3.5 py-2.5 text-sm text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[#2F2C2A] mb-1">Nomor WhatsApp *</label>
+                        <input type="tel" id="buyerPhone" required placeholder="08123456789" class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-3.5 py-2.5 text-sm text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white">
+                    </div>
+                </div>
+
+                <!-- Delivery / COD Method -->
+                <div>
+                    <label class="block text-xs font-bold text-[#2F2C2A] mb-1.5">Metode Transaksi & Pengiriman *</label>
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="deliveryMethod" value="COD (Ketemuan Langsung)" checked class="peer sr-only">
+                            <div class="p-3 rounded-xl border-2 border-[#ADA69C]/70 peer-checked:border-[#FF8500] peer-checked:bg-[#FF8500]/10 transition-all">
+                                <div class="font-bold text-xs text-[#2F2C2A] flex items-center gap-1.5">
+                                    <i class="fa-solid fa-handshake text-[#FF5700]"></i> COD Langsung
+                                </div>
+                                <p class="text-[11px] text-[#78726D] mt-0.5">Bayar saat cek barang</p>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="deliveryMethod" value="Kurir Instan / Ekspedisi" class="peer sr-only">
+                            <div class="p-3 rounded-xl border-2 border-[#ADA69C]/70 peer-checked:border-[#FF8500] peer-checked:bg-[#FF8500]/10 transition-all">
+                                <div class="font-bold text-xs text-[#2F2C2A] flex items-center gap-1.5">
+                                    <i class="fa-solid fa-truck-fast text-[#FF8500]"></i> Kurir / Rekber
+                                </div>
+                                <p class="text-[11px] text-[#78726D] mt-0.5">Kirim ke alamat rumah</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Address / COD Location -->
+                <div>
+                    <label class="block text-xs font-bold text-[#2F2C2A] mb-1">Alamat Pengiriman / Titik COD *</label>
+                    <textarea id="buyerAddress" rows="2" required placeholder="Tulis alamat lengkap atau titik temu COD (misal: Alun-alun Sumedang / Jl. Dago Bandung)..." class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-3.5 py-2.5 text-sm text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white"></textarea>
+                </div>
+
+                <!-- Payment Method -->
+                <div>
+                    <label class="block text-xs font-bold text-[#2F2C2A] mb-1">Metode Pembayaran</label>
+                    <select id="paymentMethod" class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-3.5 py-2.5 text-sm font-semibold text-[#2F2C2A] focus:outline-none focus:border-[#FF8500]">
+                        <option value="Tunai saat COD">Tunai saat COD (Bayar di Tempat)</option>
+                        <option value="Transfer Bank / Virtual Account">Transfer Bank / Virtual Account (Rekber Barkas)</option>
+                        <option value="QRIS / E-Wallet (GoPay, OVO, DANA)">QRIS / E-Wallet (GoPay, OVO, DANA)</option>
+                    </select>
+                </div>
+
+                <!-- Submit -->
+                <div class="pt-2 flex gap-3">
+                    <button type="button" onclick="closeModal('checkoutModal')" class="flex-1 py-3 rounded-xl bg-[#D6D3CE] hover:bg-[#ADA69C] text-[#2F2C2A] font-bold text-sm transition-colors cursor-pointer">
+                        Batal
+                    </button>
+                    <button type="submit" class="flex-2 w-2/3 py-3 rounded-xl bg-[#FF8500] hover:bg-[#FF5700] text-white font-display font-bold text-sm shadow-lg shadow-[#FF5700]/25 transition-all cursor-pointer">
+                        Konfirmasi Pesanan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL 3: SELL ITEM FORM (+ JUAL BARANG) ==================== -->
+    <div id="sellModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-[#2F2C2A]/70 backdrop-blur-sm p-3 sm:p-6 flex items-center justify-center">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden animate-slide-up my-auto border border-[#ADA69C]">
+            <!-- Header (#78726D Dim Gray) -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-[#ADA69C]/50 bg-[#78726D] text-white">
+                <div>
+                    <h3 class="font-display font-extrabold text-lg sm:text-xl">
+                        Pasang Iklan Barang Bekas
+                    </h3>
+                    <p class="text-xs text-[#D6D3CE]">Gratis! Iklan langsung tayang di halaman utama Barkas.</p>
+                </div>
+                <button onclick="closeModal('sellModal')" class="w-9 h-9 rounded-xl bg-white/15 hover:bg-[#FF5700] text-white flex items-center justify-center shadow-sm cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Form -->
+            <form id="sellForm" onsubmit="handleSellSubmit(event)" class="p-5 sm:p-6 space-y-4 max-h-[82vh] overflow-y-auto">
+                <!-- Photo Upload & Preview -->
+                <div>
+                    <label class="block text-xs font-bold text-[#2F2C2A] mb-1.5">Foto Barang *</label>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl border-2 border-dashed border-[#ADA69C] bg-[#D6D3CE]/45 hover:border-[#FF8500] transition-colors">
+                        <div class="w-28 h-24 rounded-xl bg-[#D6D3CE] overflow-hidden shrink-0 flex items-center justify-center relative border border-[#ADA69C]/60">
+                            <img id="sellImagePreview" src="" alt="Preview" class="hidden w-full h-full object-cover">
+                            <div id="sellImagePlaceholder" class="text-center text-[#78726D] p-2">
+                                <i class="fa-solid fa-image text-2xl mb-1 block"></i>
+                                <span class="text-[10px] font-medium">Preview Foto</span>
+                            </div>
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <label for="sellPhotoInput" class="inline-flex items-center gap-2 bg-white hover:bg-[#D6D3CE] text-[#2F2C2A] border border-[#ADA69C] font-bold text-xs px-4 py-2.5 rounded-xl cursor-pointer shadow-sm transition-all">
+                                <i class="fa-solid fa-upload text-[#FF5700]"></i>
+                                <span>Pilih Foto dari Perangkat</span>
+                            </label>
+                            <input type="file" id="sellPhotoInput" accept="image/*" onchange="handlePhotoUpload(event)" class="hidden">
+                            <p class="text-[11px] text-[#78726D] mt-2">
+                                Format JPG, PNG, WebP. Jika tidak diunggah, otomatis menggunakan foto ilustrasi sesuai kategori.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Name -->
+                <div>
+                    <label for="sellTitle" class="block text-xs font-bold text-[#2F2C2A] mb-1">Judul / Nama Barang *</label>
+                    <input type="text" id="sellTitle" required placeholder="Contoh: iPhone 13 128GB Midnight Mulus Fullset" class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-4 py-2.5 text-sm text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white">
+                </div>
+
+                <!-- Category & Condition -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                        <label for="sellCategory" class="block text-xs font-bold text-[#2F2C2A] mb-1">Kategori *</label>
+                        <select id="sellCategory" required onchange="updateDefaultPreviewByCategory()" class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-3.5 py-2.5 text-sm font-semibold text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white">
+                            <option value="Handphone">Handphone</option>
+                            <option value="Motor">Motor</option>
+                            <option value="Mobil">Mobil</option>
+                            <option value="Pakaian">Pakaian</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="sellCondition" class="block text-xs font-bold text-[#2F2C2A] mb-1">Kondisi Barang *</label>
+                        <select id="sellCondition" required class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-3.5 py-2.5 text-sm font-semibold text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white">
+                            <option value="Seperti Baru (99%)">Seperti Baru (99%)</option>
+                            <option value="Mulus (95%)">Mulus (95%)</option>
+                            <option value="Bekas Pemakaian Wajar">Bekas Pemakaian Wajar</option>
+                            <option value="Butuh Sedikit Perbaikan">Butuh Sedikit Perbaikan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Price & Location -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                        <label for="sellPrice" class="block text-xs font-bold text-[#2F2C2A] mb-1">Harga Jual (Rp) *</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-bold text-[#78726D]">Rp</span>
+                            <input type="number" id="sellPrice" required min="1000" step="500" placeholder="2500000" class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl pl-10 pr-4 py-2.5 text-sm font-bold text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="sellLocation" class="block text-xs font-bold text-[#2F2C2A] mb-1">Lokasi / Kota *</label>
+                        <select id="sellLocation" required class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-3.5 py-2.5 text-sm font-semibold text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white">
+                            <option value="Bandung">Bandung</option>
+                            <option value="Sumedang">Sumedang</option>
+                            <option value="Jakarta">Jakarta</option>
+                            <option value="Surabaya">Surabaya</option>
+                            <option value="Yogyakarta">Yogyakarta</option>
+                            <option value="Semarang">Semarang</option>
+                            <option value="Denpasar">Denpasar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Seller Name -->
+                <div>
+                    <label for="sellSellerName" class="block text-xs font-bold text-[#2F2C2A] mb-1">Nama Penjual *</label>
+                    <input type="text" id="sellSellerName" required placeholder="Contoh: Kang Rian" class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-4 py-2.5 text-sm text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white">
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label for="sellDescription" class="block text-xs font-bold text-[#2F2C2A] mb-1">Deskripsi Lengkap *</label>
+                    <textarea id="sellDescription" rows="3" required placeholder="Jelaskan kelengkapan, minus (jika ada), alasan dijual, dan lokasi COD..." class="w-full bg-[#D6D3CE]/45 border border-[#ADA69C] rounded-xl px-4 py-2.5 text-sm text-[#2F2C2A] focus:outline-none focus:border-[#FF8500] focus:bg-white"></textarea>
+                </div>
+
+                <!-- Submit Actions -->
+                <div class="pt-2 flex items-center justify-end gap-3 border-t border-[#ADA69C]/50">
+                    <button type="button" onclick="closeModal('sellModal')" class="px-5 py-2.5 rounded-xl bg-[#D6D3CE] hover:bg-[#ADA69C] text-[#2F2C2A] font-bold text-sm transition-colors cursor-pointer">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-[#FF8500] hover:bg-[#FF5700] text-white font-display font-bold text-sm shadow-lg shadow-[#FF5700]/25 transition-all flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Tayangkan Iklan</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL 4: WISHLIST DRAWER / MODAL ==================== -->
+    <div id="wishlistModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-[#2F2C2A]/70 backdrop-blur-sm p-4 flex items-center justify-center">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden animate-slide-up border border-[#ADA69C]">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-[#ADA69C]/50 bg-[#78726D] text-white">
+                <h3 class="font-display font-extrabold text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-heart text-[#FF8500]"></i> Barang Favorit Saya
+                </h3>
+                <button onclick="closeModal('wishlistModal')" class="w-8 h-8 rounded-xl bg-white/15 hover:bg-[#FF5700] text-white flex items-center justify-center cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="wishlistItemsContainer" class="p-5 max-h-[65vh] overflow-y-auto space-y-3">
+                <!-- Wishlist items injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- ==================== APPLICATION LOGIC (JAVASCRIPT) ==================== -->
+    <script>
+        // 1. CATEGORIES CONFIGURATION
+        const CATEGORIES = [
+            { id: 'Semua', label: 'Semua', icon: 'fa-border-all' },
+            { id: 'Handphone', label: 'Handphone', icon: 'fa-mobile-screen-button' },
+            { id: 'Motor', label: 'Motor', icon: 'fa-motorcycle' },
+            { id: 'Mobil', label: 'Mobil', icon: 'fa-car' },
+            { id: 'Pakaian', label: 'Pakaian', icon: 'fa-shirt' },
+            { id: 'Laptop', label: 'Laptop', icon: 'fa-laptop' },
+            { id: 'Lainnya', label: 'Lainnya', icon: 'fa-box-open' }
+        ];
+
+        // Fallback category images (curated Unsplash photos)
+        const CATEGORY_FALLBACK_IMAGES = {
+            'Handphone': 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80',
+            'Motor': 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80',
+            'Mobil': 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80',
+            'Pakaian': 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80',
+            'Laptop': 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
+            'Lainnya': 'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&fit=crop&w=800&q=80'
+        };
+
+        // 2. INITIAL REALISTIC INDONESIAN SECOND-HAND CATALOG (12 ITEMS)
+        const INITIAL_PRODUCTS = [
+            {
+                id: 'brk-101',
+                title: 'iPhone 13 Pro 128GB Sierra Blue Ex iBox Mulus',
+                category: 'Handphone',
+                price: 9850000,
+                condition: 'Mulus (95%)',
+                location: 'Bandung',
+                seller: 'Rizky Pratama',
+                postedAt: '15 menit lalu',
+                timestamp: Date.now() - 1000 * 60 * 15,
+                image: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=800&q=80',
+                description: 'Dijual iPhone 13 Pro 128GB warna Sierra Blue resmi iBox (kode PA/A).\n- Battery Health 89% awet seharian\n- Face ID, True Tone, kamera 3x zoom normal jaya\n- Kelengkapan: Dus original, kabel charger, bonus 2 softcase\n- COD area Dago / Buah Batu Bandung.'
+            },
+            {
+                id: 'brk-102',
+                title: 'Yamaha Jupiter Z 2010 Burhan Terawat Pajak Hidup',
+                category: 'Motor',
+                price: 6750000,
+                condition: 'Bekas Pemakaian Wajar',
+                location: 'Sumedang',
+                seller: 'Mang Deden',
+                postedAt: '1 jam lalu',
+                timestamp: Date.now() - 1000 * 60 * 60,
+                image: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80',
+                description: 'Motor kesayangan Yamaha Jupiter Z Burung Hantu tahun 2010.\n- Mesin halus kering, tarikan enteng khas Jupiter\n- Kelistrikan normal, starter tokcer\n- Surat lengkap BPKB & STNK, pajak panjang sampai tahun depan\n- Lokasi cek unit di Sumedang Kota.'
+            },
+            {
+                id: 'brk-103',
+                title: 'MacBook Air M1 2020 8GB/256GB Space Gray Fullset',
+                category: 'Laptop',
+                price: 8900000,
+                condition: 'Seperti Baru (99%)',
+                location: 'Jakarta',
+                seller: 'Nadia Putri',
+                postedAt: '2 jam lalu',
+                timestamp: Date.now() - 1000 * 60 * 120,
+                image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80',
+                description: 'MacBook Air chip Apple M1 super kencang dan hemat baterai.\n- Cycle Count baru 140an, BH 94%\n- Layar bening no dead pixel, body mulus terpasang skin bening\n- Lengkap box, adaptor 30W ori, kabel USB-C\n- Siap COD Jakarta Selatan / kirim rekber.'
+            },
+            {
+                id: 'brk-104',
+                title: 'Toyota Avanza 1.3 G Manual 2016 Putih Tangan Pertama',
+                category: 'Mobil',
+                price: 132000000,
+                condition: 'Mulus (95%)',
+                location: 'Surabaya',
+                seller: 'Hendra Wijaya',
+                postedAt: '3 jam lalu',
+                timestamp: Date.now() - 1000 * 60 * 180,
+                image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80',
+                description: 'Toyota Avanza tipe G 1.3 Manual tahun 2016 warna putih.\n- Kilometer rendah 78rb asli servis rutin bengkel resmi\n- AC double blower dingin menggigil\n- Interior bersih bebas bau rokok, ban tebal 85%\n- Bebas tabrak dan bebas banjir, siap bawa mekanik.'
+            },
+            {
+                id: 'brk-105',
+                title: 'Jaket Denim Vintage Levi’s Trucker Size L Original',
+                category: 'Pakaian',
+                price: 425000,
+                condition: 'Mulus (95%)',
+                location: 'Yogyakarta',
+                seller: 'Dimas Thrift',
+                postedAt: '4 jam lalu',
+                timestamp: Date.now() - 1000 * 60 * 240,
+                image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80',
+                description: 'Jaket denim vintage Levi’s Type III Trucker warna medium wash.\n- Ukuran L (Panjang 65cm x Lebar Dada 56cm)\n- Bahan katun denim tebal, kancing emboss asli\n- Sudah dicuci bersih dan wangi, siap pakai nongkrong.'
+            },
+            {
+                id: 'brk-106',
+                title: 'Honda Beat Street eSP 2021 Hitam Doff Low KM',
+                category: 'Motor',
+                price: 13500000,
+                condition: 'Seperti Baru (99%)',
+                location: 'Bandung',
+                seller: 'Fajar Nugraha',
+                postedAt: '5 jam lalu',
+                timestamp: Date.now() - 1000 * 60 * 300,
+                image: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80',
+                description: 'Honda Beat Street tahun 2021 warna hitam doff gagah.\n- Odometer baru jalan 14.000 km\n- Ban depan belakang masih bawaan pabrik tebal\n- Kunci cadangan, buku servis, STNK & BPKB komplit.'
+            },
+            {
+                id: 'brk-107',
+                title: 'Asus ROG Strix G15 Ryzen 7 RTX 3050 RAM 16GB',
+                category: 'Laptop',
+                price: 10500000,
+                condition: 'Mulus (95%)',
+                location: 'Semarang',
+                seller: 'Kevin Gaming',
+                postedAt: '6 jam lalu',
+                timestamp: Date.now() - 1000 * 60 * 360,
+                image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80',
+                description: 'Laptop gaming & editing Asus ROG Strix G15.\n- AMD Ryzen 7 4800H, NVIDIA RTX 3050 4GB\n- RAM 16GB DDR4, SSD NVMe 512GB\n- Layar 144Hz mulus, RGB keyboard nyala terang\n- Bonus tas ransel ROG original.'
+            },
+            {
+                id: 'brk-108',
+                title: 'Kulkas Mini Portable Sharp 1 Pintu Hemat Listrik',
+                category: 'Lainnya',
+                price: 950000,
+                condition: 'Mulus (95%)',
+                location: 'Sumedang',
+                seller: 'Teh Sari',
+                postedAt: '8 jam lalu',
+                timestamp: Date.now() - 1000 * 60 * 480,
+                image: 'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&fit=crop&w=800&q=80',
+                description: 'Kulkas mini bekas anak kos di Jatinangor Sumedang, dijual karena sudah lulus kuliah.\n- Dingin cepat, freezer berfungsi normal untuk es batu\n- Daya listrik cuma 50 Watt sangat hemat\n- Kondisi bersih tidak berkarat.'
+            },
+            {
+                id: 'brk-109',
+                title: 'Samsung Galaxy S22 Ultra 5G 12/256GB Burgundy SEIN',
+                category: 'Handphone',
+                price: 8600000,
+                condition: 'Bekas Pemakaian Wajar',
+                location: 'Jakarta',
+                seller: 'Arif Gadget',
+                postedAt: '10 jam lalu',
+                timestamp: Date.now() - 1000 * 60 * 600,
+                image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80',
+                description: 'Samsung S22 Ultra resmi SEIN dual SIM fisik.\n- S-Pen berfungsi normal buat catatan & remote kamera\n- Layar aman no shadow no greenline\n- Ada lecet halus bekas pemakaian case di bezel bawah, performa ngebut.'
+            },
+            {
+                id: 'brk-110',
+                title: 'Sepatu Sneakers Nike Air Jordan 1 Low Panda Size 42',
+                category: 'Pakaian',
+                price: 1150000,
+                condition: 'Mulus (95%)',
+                location: 'Bandung',
+                seller: 'Aldi Kicks',
+                postedAt: '12 jam lalu',
+                timestamp: Date.now() - 1000 * 60 * 720,
+                image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80',
+                description: 'Air Jordan 1 Low Black White (Panda) ukuran 42 / 26.5 cm.\n- Pemakaian pribadi jarang dipakai (cuma 4-5 kali ke mall)\n- Heel drag minim, insole masih jelas logonya\n- Lengkap dengan box original.'
+            },
+            {
+                id: 'brk-111',
+                title: 'Honda Brio Satya E CVT 2019 Kuning Irit BBM',
+                category: 'Mobil',
+                price: 138500000,
+                condition: 'Seperti Baru (99%)',
+                location: 'Denpasar',
+                seller: 'Made Putra',
+                postedAt: '1 hari lalu',
+                timestamp: Date.now() - 1000 * 60 * 1440,
+                image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
+                description: 'Honda Brio Satya E Matic CVT tahun 2019.\n- Transmisi matic responsif halus\n- Sangat irit BBM untuk harian dalam kota\n- Pajak panjang, kaki-kaki senyap tanpa bunyi.'
+            },
+            {
+                id: 'brk-112',
+                title: 'Kamera Mirrorless Sony A6000 Kit 16-50mm SC Rendah',
+                category: 'Lainnya',
+                price: 4850000,
+                condition: 'Mulus (95%)',
+                location: 'Yogyakarta',
+                seller: 'Lensa Jogja',
+                postedAt: '1 hari lalu',
+                timestamp: Date.now() - 1000 * 60 * 1600,
+                image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80',
+                description: 'Kamera mirrorless favorit vlogger & fotografer Sony Alpha A6000.\n- Shutter count baru 6.800-an\n- Sensor bersih bebas jamur, lensa kit autofocus cepat\n- Kelengkapan: Body, lensa, baterai ori, charger, strap, tas kamera.'
+            }
+        ];
+
+        // 3. APPLICATION STATE
+        let products = [];
+        let wishlist = [];
+        let activeCategory = 'Semua';
+        let activeLocation = 'Semua Kota';
+        let searchQuery = '';
+        let sortBy = 'newest';
+        let selectedProduct = null;
+        let uploadedImageBase64 = '';
+        // Store chat history per product ID during session
+        let chatHistories = {};
+
+        // 4. INITIALIZATION
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFromLocalStorage();
+            renderCategories();
+            renderProducts();
+            updateWishlistBadge();
+        });
+
+        function loadFromLocalStorage() {
+            try {
+                const savedProducts = localStorage.getItem('barkas_products_v1');
+                if (savedProducts) {
+                    products = JSON.parse(savedProducts);
+                } else {
+                    products = [...INITIAL_PRODUCTS];
+                    saveProductsToLocalStorage();
+                }
+
+                const savedWishlist = localStorage.getItem('barkas_wishlist_v1');
+                if (savedWishlist) {
+                    wishlist = JSON.parse(savedWishlist);
+                }
+            } catch (e) {
+                console.error('Gagal memuat localStorage:', e);
+                products = [...INITIAL_PRODUCTS];
+            }
+        }
+
+        function saveProductsToLocalStorage() {
+            try {
+                localStorage.setItem('barkas_products_v1', JSON.stringify(products));
+            } catch (e) {
+                console.warn('Kapasitas penyimpanan browser penuh:', e);
+            }
+        }
+
+        function saveWishlistToLocalStorage() {
+            try {
+                localStorage.setItem('barkas_wishlist_v1', JSON.stringify(wishlist));
+            } catch (e) {
+                console.warn('Gagal menyimpan wishlist:', e);
+            }
+        }
+
+        // 5. CURRENCY FORMATTER
+        function formatRupiah(amount) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        // 6. RENDER INTERACTIVE CATEGORIES
+        function renderCategories() {
+            const container = document.getElementById('categoryContainer');
+            container.innerHTML = CATEGORIES.map(cat => {
+                // Count items in this category
+                const count = cat.id === 'Semua' 
+                    ? products.length 
+                    : products.filter(p => p.category === cat.id).length;
+
+                const isActive = activeCategory === cat.id;
+                const activeClasses = isActive
+                    ? 'bg-[#FF8500] text-white border-[#FF5700] shadow-md shadow-[#FF5700]/25 scale-[1.02]'
+                    : 'bg-white text-[#2F2C2A] border-[#ADA69C] hover:border-[#FF8500] hover:bg-[#ADA69C]/20';
+
+                const iconBoxClasses = isActive
+                    ? 'bg-[#FF5700] text-white'
+                    : 'bg-[#D6D3CE] text-[#78726D]';
+
+                const countClasses = isActive
+                    ? 'text-white/95 font-semibold'
+                    : 'text-[#78726D]';
+
+                return `
+                    <button onclick="selectCategory('${cat.id}')" class="flex items-center sm:flex-col sm:justify-center gap-3 sm:gap-2 p-3 sm:p-4 rounded-2xl border transition-all duration-200 text-left sm:text-center cursor-pointer ${activeClasses}">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-base shrink-0 transition-colors ${iconBoxClasses}">
+                            <i class="fa-solid ${cat.icon}"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="font-display font-bold text-xs sm:text-sm block truncate">${cat.label}</span>
+                            <span class="text-[11px] block ${countClasses}">${count} barang</span>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // 7. FILTER & SORT LOGIC
+        function selectCategory(categoryId) {
+            activeCategory = categoryId;
+            renderCategories();
+            renderProducts();
+        }
+
+        function syncLocation(val) {
+            activeLocation = val;
+            document.getElementById('locationFilterDesktop').value = val;
+            document.getElementById('locationFilterMobile').value = val;
+            renderProducts();
+        }
+
+        function syncSearch(val) {
+            searchQuery = val;
+            document.getElementById('searchInputDesktop').value = val;
+            document.getElementById('searchInputMobile').value = val;
+
+            // Toggle clear buttons
+            document.getElementById('clearSearchDesktop').classList.toggle('hidden', !val);
+            document.getElementById('clearSearchMobile').classList.toggle('hidden', !val);
+
+            renderProducts();
+        }
+
+        function handleSortChange(val) {
+            sortBy = val;
+            renderProducts();
+        }
+
+        function resetAllFilters() {
+            activeCategory = 'Semua';
+            syncLocation('Semua Kota');
+            syncSearch('');
+            sortBy = 'newest';
+            document.getElementById('sortSelect').value = 'newest';
+            renderCategories();
+            renderProducts();
+        }
+
+        function getFilteredAndSortedProducts() {
+            let filtered = products.filter(item => {
+                const matchCat = activeCategory === 'Semua' || item.category === activeCategory;
+                const matchLoc = activeLocation === 'Semua Kota' || item.location.toLowerCase() === activeLocation.toLowerCase();
+                const q = searchQuery.trim().toLowerCase();
+                const matchQuery = !q || 
+                    item.title.toLowerCase().includes(q) || 
+                    item.location.toLowerCase().includes(q) ||
+                    item.category.toLowerCase().includes(q) ||
+                    item.description.toLowerCase().includes(q);
+                return matchCat && matchLoc && matchQuery;
+            });
+
+            if (sortBy === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortBy === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else {
+                filtered.sort((a, b) => b.timestamp - a.timestamp);
+            }
+
+            return filtered;
+        }
+
+        // 8. RENDER PRODUCT CARDS
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const emptyState = document.getElementById('emptyState');
+            const heading = document.getElementById('catalogHeading');
+            const countBadge = document.getElementById('itemCountBadge');
+            const resetBtn = document.getElementById('resetFilterBtn');
+
+            const filtered = getFilteredAndSortedProducts();
+
+            // Update Heading & Badges
+            let titleText = activeCategory === 'Semua' ? 'Semua Barang Bekas' : `Kategori: ${activeCategory}`;
+            if (activeLocation !== 'Semua Kota') titleText += ` di ${activeLocation}`;
+            heading.textContent = titleText;
+            countBadge.textContent = `${filtered.length} barang`;
+
+            const hasFilter = activeCategory !== 'Semua' || activeLocation !== 'Semua Kota' || searchQuery.trim() !== '';
+            resetBtn.classList.toggle('hidden', !hasFilter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = filtered.map((item, idx) => {
+                const isWishlisted = wishlist.includes(item.id);
+                const fallbackImg = CATEGORY_FALLBACK_IMAGES[item.category] || CATEGORY_FALLBACK_IMAGES['Lainnya'];
+                const isPopular = idx < 3;
+
+                return `
+                    <article onclick="openDetailModal('${item.id}')" class="group bg-white rounded-2xl border border-[#ADA69C] overflow-hidden shadow-sm hover:shadow-xl hover:border-[#FF8500] hover:-translate-y-1 transition-all duration-200 flex flex-col cursor-pointer">
+                        <!-- Image Container -->
+                        <div class="relative aspect-[4/3] bg-[#D6D3CE] overflow-hidden">
+                            <img src="${item.image}" onerror="this.onerror=null;this.src='${fallbackImg}';" alt="${escapeHtml(item.title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                            
+                            <!-- Category & Urgent/Nego Pill -->
+                            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+                                <span class="bg-[#78726D]/95 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">
+                                    ${item.category}
+                                </span>
+                                <span class="bg-[#FF5700] text-white text-[10px] font-extrabold px-2 py-1 rounded-lg shadow-sm uppercase tracking-wide">
+                                    ${isPopular ? 'Terlaris' : 'Nego'}
+                                </span>
+                            </div>
+
+                            <!-- Wishlist Heart Button -->
+                            <button onclick="event.stopPropagation(); toggleWishlist('${item.id}')" aria-label="Simpan Favorit" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 hover:bg-white backdrop-blur-md flex items-center justify-center shadow-sm border border-[#ADA69C]/40 transition-transform active:scale-90 cursor-pointer">
+                                <i class="${isWishlisted ? 'fa-solid fa-heart text-[#FF5700]' : 'fa-regular fa-heart text-[#78726D]'} text-sm"></i>
+                            </button>
+
+                            <!-- Condition Tag -->
+                            <span class="absolute bottom-2.5 left-2.5 bg-[#2F2C2A]/85 backdrop-blur-sm text-[#D6D3CE] text-[10px] font-semibold px-2.5 py-0.5 rounded-md">
+                                ${item.condition}
+                            </span>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-semibold text-sm text-[#2F2C2A] line-clamp-2 group-hover:text-[#FF5700] transition-colors leading-snug">
+                                    ${escapeHtml(item.title)}
+                                </h3>
+                                <p class="font-display font-extrabold text-lg text-[#FF5700] mt-1.5">
+                                    ${formatRupiah(item.price)}
+                                </p>
+                            </div>
+
+                            <div class="mt-3 pt-3 border-t border-[#D6D3CE] flex items-center justify-between text-[11px] text-[#78726D]">
+                                <span class="flex items-center gap-1 font-semibold truncate max-w-[55%] text-[#2F2C2A]">
+                                    <i class="fa-solid fa-location-dot text-[#FF8500]"></i>
+                                    ${escapeHtml(item.location)}
+                                </span>
+                                <span class="text-[#78726D] shrink-0">${item.postedAt}</span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        // 9. WISHLIST MANAGEMENT
+        function toggleWishlist(productId) {
+            const idx = wishlist.indexOf(productId);
+            if (idx > -1) {
+                wishlist.splice(idx, 1);
+                showToast('Dihapus dari daftar favorit', 'info');
+            } else {
+                wishlist.push(productId);
+                showToast('Disimpan ke barang favorit!', 'success');
+            }
+            saveWishlistToLocalStorage();
+            updateWishlistBadge();
+            renderProducts();
+            if (selectedProduct && selectedProduct.id === productId) {
+                updateDetailWishlistIcon();
+            }
+        }
+
+        function toggleWishlistFromDetail() {
+            if (!selectedProduct) return;
+            toggleWishlist(selectedProduct.id);
+        }
+
+        function updateWishlistBadge() {
+            document.getElementById('wishlistBadge').textContent = wishlist.length;
+        }
+
+        function openWishlistModal() {
+            const container = document.getElementById('wishlistItemsContainer');
+            const wishlistedItems = products.filter(p => wishlist.includes(p.id));
+
+            if (wishlistedItems.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10">
+                        <div class="w-14 h-14 rounded-full bg-[#FF8500]/15 text-[#FF5700] flex items-center justify-center mx-auto mb-3 text-xl">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <p class="font-bold text-[#2F2C2A] text-sm">Belum Ada Barang Favorit</p>
+                        <p class="text-xs text-[#78726D] mt-1">Klik ikon hati pada barang yang kamu incar untuk menyimpannya di sini.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = wishlistedItems.map(item => `
+                    <div class="flex items-center gap-3 p-3 rounded-2xl border border-[#ADA69C] bg-[#D6D3CE]/30 hover:bg-[#D6D3CE]/60 transition-colors">
+                        <img src="${item.image}" alt="${escapeHtml(item.title)}" class="w-16 h-16 rounded-xl object-cover shrink-0 bg-[#D6D3CE]">
+                        <div class="flex-1 min-w-0 cursor-pointer" onclick="closeModal('wishlistModal'); openDetailModal('${item.id}')">
+                            <h4 class="font-bold text-xs sm:text-sm text-[#2F2C2A] truncate">${escapeHtml(item.title)}</h4>
+                            <p class="font-display font-extrabold text-sm text-[#FF5700] mt-0.5">${formatRupiah(item.price)}</p>
+                            <p class="text-[11px] text-[#78726D] mt-0.5"><i class="fa-solid fa-location-dot text-[#FF8500] mr-1"></i>${item.location}</p>
+                        </div>
+                        <button onclick="toggleWishlist('${item.id}'); openWishlistModal();" class="p-2 text-[#FF5700] hover:bg-[#FF5700]/15 rounded-xl cursor-pointer" title="Hapus">
+                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            openModal('wishlistModal');
+        }
+
+        // 10. PRODUCT DETAIL MODAL & REAL-TIME CHAT/NEGO
+        function openDetailModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            selectedProduct = product;
+
+            const fallbackImg = CATEGORY_FALLBACK_IMAGES[product.category] || CATEGORY_FALLBACK_IMAGES['Lainnya'];
+            const imgEl = document.getElementById('detailImage');
+            imgEl.src = product.image;
+            imgEl.onerror = () => { imgEl.src = fallbackImg; };
+
+            document.getElementById('detailCategoryBadge').textContent = product.category;
+            document.getElementById('detailTimeBadge').textContent = product.postedAt;
+            document.getElementById('detailConditionBadge').textContent = product.condition;
+            document.getElementById('detailConditionText').textContent = product.condition;
+            document.getElementById('detailLocationText').textContent = product.location;
+            document.getElementById('detailLocation').innerHTML = `<i class="fa-solid fa-location-dot text-[#FF5700]"></i> ${escapeHtml(product.location)}`;
+            document.getElementById('detailTitle').textContent = product.title;
+            document.getElementById('detailPrice').textContent = formatRupiah(product.price);
+            document.getElementById('detailDescription').textContent = product.description;
+            document.getElementById('detailSellerName').innerHTML = `${escapeHtml(product.seller)} <i class="fa-solid fa-circle-check text-[#FF8500] text-xs"></i>`;
+
+            // Seller Initials
+            const initials = product.seller.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+            document.getElementById('detailSellerAvatar').textContent = initials || 'BK';
+
+            updateDetailWishlistIcon();
+            switchDetailTab('info');
+
+            // Initialize chat history for this item if empty
+            if (!chatHistories[product.id]) {
+                chatHistories[product.id] = [
+                    {
+                        sender: 'seller',
+                        text: `Halo! Terima kasih sudah melihat iklan "${product.title}". Silakan tanya kondisi atau ajukan harga nego ya kak 😊`,
+                        time: 'Sekarang'
+                    }
+                ];
+            }
+            renderChatMessages();
+
+            openModal('detailModal');
+        }
+
+        function updateDetailWishlistIcon() {
+            if (!selectedProduct) return;
+            const btn = document.getElementById('detailWishlistBtn');
+            const isWish = wishlist.includes(selectedProduct.id);
+            btn.innerHTML = isWish
+                ? '<i class="fa-solid fa-heart text-lg text-[#FF5700]"></i>'
+                : '<i class="fa-regular fa-heart text-lg text-[#78726D]"></i>';
+        }
+
+        function switchDetailTab(tab) {
+            const infoPane = document.getElementById('detailInfoPane');
+            const chatPane = document.getElementById('detailChatPane');
+            const infoBtn = document.getElementById('tabInfoBtn');
+            const chatBtn = document.getElementById('tabChatBtn');
+
+            if (tab === 'info') {
+                infoPane.classList.remove('hidden');
+                chatPane.classList.add('hidden');
+                infoBtn.className = 'flex-1 py-2 text-xs font-bold rounded-lg bg-white text-[#2F2C2A] shadow-sm transition-all cursor-pointer';
+                chatBtn.className = 'flex-1 py-2 text-xs font-bold rounded-lg text-[#78726D] hover:text-[#2F2C2A] transition-all cursor-pointer';
+            } else {
+                infoPane.classList.add('hidden');
+                chatPane.classList.remove('hidden');
+                chatBtn.className = 'flex-1 py-2 text-xs font-bold rounded-lg bg-white text-[#2F2C2A] shadow-sm transition-all cursor-pointer';
+                infoBtn.className = 'flex-1 py-2 text-xs font-bold rounded-lg text-[#78726D] hover:text-[#2F2C2A] transition-all cursor-pointer';
+                renderChatMessages();
+            }
+        }
+
+        function renderChatMessages() {
+            if (!selectedProduct) return;
+            const box = document.getElementById('chatMessagesBox');
+            const messages = chatHistories[selectedProduct.id] || [];
+
+            box.innerHTML = messages.map(m => {
+                if (m.sender === 'buyer') {
+                    return `
+                        <div class="flex justify-end">
+                            <div class="bg-[#FF8500] text-white rounded-2xl rounded-br-sm px-3.5 py-2 max-w-[82%] shadow-sm">
+                                <p class="leading-relaxed">${escapeHtml(m.text)}</p>
+                                <span class="text-[9px] text-white/85 block text-right mt-0.5">${m.time}</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="flex justify-start">
+                            <div class="bg-white border border-[#ADA69C] text-[#2F2C2A] rounded-2xl rounded-bl-sm px-3.5 py-2 max-w-[82%] shadow-sm">
+                                <span class="text-[10px] font-bold text-[#FF5700] block mb-0.5">${escapeHtml(selectedProduct.seller)}</span>
+                                <p class="leading-relaxed">${escapeHtml(m.text)}</p>
+                                <span class="text-[9px] text-[#78726D] block mt-0.5">${m.time}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            }).join('');
+
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function sendQuickOffer(multiplier) {
+            if (!selectedProduct) return;
+            const offerPrice = Math.round((selectedProduct.price * multiplier) / 1000) * 1000;
+            const msg = `Halo kak, boleh nego di harga ${formatRupiah(offerPrice)}? Serius minat nih.`;
+            pushChatMessage(msg, offerPrice);
+        }
+
+        function sendQuickText(text) {
+            pushChatMessage(text, null);
+        }
+
+        function handleSendChat(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = '';
+
+            // Detect if user typed a numeric offer
+            const numericVal = parseInt(text.replace(/[^0-9]/g, ''), 10);
+            const isOffer = !isNaN(numericVal) && numericVal >= 10000;
+            pushChatMessage(text, isOffer ? numericVal : null);
+        }
+
+        function pushChatMessage(buyerText, offeredPrice) {
+            if (!selectedProduct) return;
+            const pid = selectedProduct.id;
+            const now = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+
+            chatHistories[pid].push({ sender: 'buyer', text: buyerText, time: now });
+            renderChatMessages();
+
+            // Simulate realistic seller auto-reply after 700ms
+            setTimeout(() => {
+                let reply = '';
+                if (offeredPrice) {
+                    const minAcceptable = selectedProduct.price * 0.88;
+                    if (offeredPrice >= selectedProduct.price) {
+                        reply = `Wah cocok banget kak! Harga ${formatRupiah(offeredPrice)} langsung deal. Silakan klik "Beli Sekarang" ya!`;
+                    } else if (offeredPrice >= minAcceptable) {
+                        // Seller agrees to negotiated price and updates product price!
+                        selectedProduct.price = offeredPrice;
+                        saveProductsToLocalStorage();
+                        renderProducts();
+                        document.getElementById('detailPrice').textContent = formatRupiah(offeredPrice);
+                        reply = `Oke kak, deal ya di harga ${formatRupiah(offeredPrice)}! Harga iklan sudah saya sesuaikan, silakan langsung checkout atau atur COD di ${selectedProduct.location}.`;
+                        showToast(`Nego berhasil! Harga diperbarui menjadi ${formatRupiah(offeredPrice)}`, 'success');
+                    } else {
+                        const counter = Math.round((selectedProduct.price * 0.93) / 1000) * 1000;
+                        reply = `Waduh belum masuk kak kalau ${formatRupiah(offeredPrice)} 😅 Gimana kalau kita ketemu di tengah di harga ${formatRupiah(counter)}? Barang dijamin ${selectedProduct.condition}.`;
+                    }
+                } else if (buyerText.toLowerCase().includes('ada') || buyerText.toLowerCase().includes('ready')) {
+                    reply = `Masih ready kak! Kondisi ${selectedProduct.condition}, siap COD di area ${selectedProduct.location} atau kirim kurir.`;
+                } else {
+                    reply = `Siap kak, barang terawat sesuai deskripsi. Kalau mau tawar harga langsung ketik nominalnya aja ya!`;
+                }
+
+                chatHistories[pid].push({ sender: 'seller', text: reply, time: now });
+                if (selectedProduct && selectedProduct.id === pid) {
+                    renderChatMessages();
+                }
+            }, 700);
+        }
+
+        // 11. CHECKOUT FLOW
+        function openCheckoutModal() {
+            if (!selectedProduct) return;
+            document.getElementById('checkoutImg').src = selectedProduct.image;
+            document.getElementById('checkoutTitle').textContent = selectedProduct.title;
+            document.getElementById('checkoutSeller').textContent = `${selectedProduct.seller} • ${selectedProduct.location}`;
+            document.getElementById('checkoutPrice').textContent = formatRupiah(selectedProduct.price);
+
+            closeModal('detailModal');
+            openModal('checkoutModal');
+        }
+
+        function processCheckout(e) {
+            e.preventDefault();
+            if (!selectedProduct) return;
+
+            const buyerName = document.getElementById('buyerName').value.trim();
+            const method = document.querySelector('input[name="deliveryMethod"]:checked').value;
+
+            closeModal('checkoutModal');
+            showToast(`Pesanan "${selectedProduct.title}" berhasil dibuat untuk ${buyerName} (${method})!`, 'success');
+            e.target.reset();
+        }
+
+        // 12. SELL ITEM FLOW (+ JUAL BARANG)
+        function openSellModal() {
+            uploadedImageBase64 = '';
+            document.getElementById('sellForm').reset();
+            updateDefaultPreviewByCategory();
+            openModal('sellModal');
+        }
+
+        function updateDefaultPreviewByCategory() {
+            if (uploadedImageBase64) return;
+            const cat = document.getElementById('sellCategory').value;
+            const previewImg = document.getElementById('sellImagePreview');
+            const placeholder = document.getElementById('sellImagePlaceholder');
+
+            previewImg.src = CATEGORY_FALLBACK_IMAGES[cat] || CATEGORY_FALLBACK_IMAGES['Lainnya'];
+            previewImg.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+        }
+
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedImageBase64 = e.target.result;
+                const previewImg = document.getElementById('sellImagePreview');
+                const placeholder = document.getElementById('sellImagePlaceholder');
+                previewImg.src = uploadedImageBase64;
+                previewImg.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function handleSellSubmit(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('sellTitle').value.trim();
+            const category = document.getElementById('sellCategory').value;
+            const condition = document.getElementById('sellCondition').value;
+            const price = parseInt(document.getElementById('sellPrice').value, 10);
+            const location = document.getElementById('sellLocation').value;
+            const seller = document.getElementById('sellSellerName').value.trim();
+            const description = document.getElementById('sellDescription').value.trim();
+
+            const finalImage = uploadedImageBase64 || CATEGORY_FALLBACK_IMAGES[category] || CATEGORY_FALLBACK_IMAGES['Lainnya'];
+
+            const newProduct = {
+                id: 'brk-' + Date.now(),
+                title,
+                category,
+                price,
+                condition,
+                location,
+                seller,
+                postedAt: 'Baru saja',
+                timestamp: Date.now(),
+                image: finalImage,
+                description
+            };
+
+            // Add to top of products array
+            products.unshift(newProduct);
+            saveProductsToLocalStorage();
+
+            // Reset category filter to Semua so user immediately sees their new listing
+            activeCategory = 'Semua';
+            renderCategories();
+            renderProducts();
+
+            closeModal('sellModal');
+            showToast(`Iklan "${title}" berhasil ditayangkan di Barkas!`, 'success');
+
+            // Smooth scroll to catalog
+            document.getElementById('katalog-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 13. MODAL & TOAST UTILITIES
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Close modal when clicking outside backdrop
+        ['detailModal', 'checkoutModal', 'sellModal', 'wishlistModal'].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener('click', (e) => {
+                if (e.target === el) closeModal(id);
+            });
+        });
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            const bgClass = type === 'success' ? 'bg-[#78726D] border-[#FF8500]' : 'bg-[#78726D] border-[#ADA69C]';
+            const iconClass = type === 'success' ? 'fa-circle-check text-[#FF8500]' : 'fa-circle-info text-[#D6D3CE]';
+
+            toast.className = `${bgClass} text-white border-l-4 px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 text-xs sm:text-sm font-medium animate-slide-up max-w-sm pointer-events-auto`;
+            toast.innerHTML = `
+                <i class="fa-solid ${iconClass} text-base shrink-0"></i>
+                <span class="leading-snug">${escapeHtml(message)}</span>
+            `;
+
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(8px)';
+                toast.style.transition = 'all 0.25s ease';
+                setTimeout(() => toast.remove(), 250);
+            }, 3400);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
 </body>
 </html>
+```
